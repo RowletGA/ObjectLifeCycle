@@ -13,18 +13,32 @@ namespace ClassLibrary
     /// </summary>
     public class Train
     {
-        /// <summary>
-        /// Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
-        /// </summary>
-        /// <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
-        public bool IsEngineStarted { get; private set; }
+      
 
+        public Train(string identifica){
+            count += 1;
+            this.identifica = identifica; 
+        }
+
+      
+        private static int count = 0;
+        public static int Count{get;set;}
+        public string identifica {get
+        { return Train.count; 
+        }
+        }
+        
+        public bool IsEngineStarted { get; private set; }
         /// <summary>
         /// Enciende las máquinas del tren.
         /// </summary>
         /// <returns>
         /// <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
         /// </returns>
+        ~Train()
+{
+   count--;
+}
         public bool StartEngines()
         {
             if (this.IsEngineStarted)
